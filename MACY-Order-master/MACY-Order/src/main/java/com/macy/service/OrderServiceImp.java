@@ -16,6 +16,10 @@ public class OrderServiceImp implements OrderService {
 
 	@Autowired
 	OrderFulFillmentRepo fulFillmentRepo;
+	
+	
+
+
 
 	@Override
 	public ResponseEntity<String> updateOrderStatus(int orderId, String status) {
@@ -26,7 +30,7 @@ public class OrderServiceImp implements OrderService {
 			FulFillmentOrderEntity fulFillmentOrderEntity = fulFillmentOrderOptional.get();
 			fulFillmentOrderEntity.setOrderStatus(status);
 			fulFillmentRepo.save(fulFillmentOrderEntity);
-			return new ResponseEntity<String>("Order Update Succesfull", HttpStatus.OK);
+			return new ResponseEntity<String>("Order Update Succesfully", HttpStatus.OK);
 		} else {
 			throw new InvalidOrderIdException("" + orderId);
 		}
